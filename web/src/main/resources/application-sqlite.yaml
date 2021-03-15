@@ -1,0 +1,5 @@
+spring:
+  datasource:
+    url: jdbc:sqlite:memory:myDb?cache=shared
+  jpa:
+    database-platform: org.example.repositories.sqlite.SQLiteDialect

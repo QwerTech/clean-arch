@@ -13,6 +13,7 @@
     <module>usecases</module>
     <module>controllers</module>
     <module>web</module>
+    <module>repositories.sqlite</module>
   </modules>
   <packaging>pom</packaging>
 
