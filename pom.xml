@@ -28,6 +28,7 @@
     <module>dataproviders/dataproviders.postgres</module>
     <module>entrypoints/entrypoints.controllers</module>
     <module>entrypoints/entrypoints.jobs</module>
+    <module>entrypoints/entrypoints.kafka</module>
     <module>usecases</module>
     <module>db.changelog</module>
     <module>application</module>
