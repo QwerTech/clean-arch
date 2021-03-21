@@ -21,7 +21,7 @@ class OrderServiceImpl implements OrderService {
   public OrderDto getById(int id) {
     Optional<Order> order = orderRepository.findById(id);
     if (!order.isPresent()) {
-      throw new EntityNotFoundException();
+      throw new EntityNotFoundException(String.format("Order with id=%d not found", id));
     }
     return new OrderDto().setId(order.get().getId()).setName(order.get().getName());
   }
