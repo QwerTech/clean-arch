@@ -15,6 +15,7 @@
     <module>web</module>
     <module>repositories.sqlite</module>
     <module>repositories.postgres</module>
+    <module>db.changelog</module>
   </modules>
   <packaging>pom</packaging>
 
