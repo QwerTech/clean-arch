@@ -5,7 +5,7 @@
   
   <changeSet id="create order table" author="Pavel_Novikov">
     <createTable tableName="orders">
-      <column name="id" type="int">
+      <column name="id" autoIncrement="true" type="int">
         <constraints nullable="false" primaryKey="true"/>
       </column>
       <column name="name" type="VARCHAR">

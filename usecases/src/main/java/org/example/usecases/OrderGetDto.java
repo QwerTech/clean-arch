@@ -5,9 +5,9 @@ import lombok.experimental.Accessors;
 
 @Data
 @Accessors(chain = true)
-public class OrderDto {
+public class OrderGetDto {
 
-  private int id;
+  private Integer id;
   private String name;
 
 }

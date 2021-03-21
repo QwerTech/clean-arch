@@ -19,6 +19,11 @@
     </dependency>
     <dependency>
       <groupId>org.example</groupId>
+      <artifactId>entrypoints.jobs</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>org.example</groupId>
       <artifactId>dataproviders.postgres</artifactId>
       <!--      <artifactId>dataproviders.sqlite</artifactId>-->
       <version>1.0-SNAPSHOT</version>

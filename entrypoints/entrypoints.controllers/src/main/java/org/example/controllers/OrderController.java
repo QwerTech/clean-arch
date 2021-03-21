@@ -1,7 +1,8 @@
 package org.example.controllers;
 
 import lombok.RequiredArgsConstructor;
-import org.example.usecases.OrderDto;
+import org.example.usecases.OrderCreateDto;
+import org.example.usecases.OrderGetDto;
 import org.example.usecases.OrderService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,14 +18,14 @@ public class OrderController {
   private final OrderService orderService;
 
   @GetMapping("/orders/{id}")
-  public ResponseEntity<OrderDto> getById(@PathVariable("id") int id) {
-    OrderDto orderDto = orderService.getById(id);
+  public ResponseEntity<OrderGetDto> getById(@PathVariable("id") int id) {
+    OrderGetDto orderDto = orderService.getById(id);
     return ResponseEntity.ok(orderDto);
   }
 
-  @PostMapping("/orders/{id}")
-  public ResponseEntity<?> save(@PathVariable("id") int id, @RequestBody OrderDto orderDto) {
-    orderService.update(orderDto);
-    return ResponseEntity.noContent().build();
+  @PostMapping("/orders")
+  public ResponseEntity<OrderGetDto> save(@RequestBody OrderCreateDto orderDto) {
+    OrderGetDto createdOrder = orderService.update(orderDto);
+    return ResponseEntity.ok(createdOrder);
   }
 }
