@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.example.usecases.OrderCreateDto;
 import org.example.usecases.OrderGetDto;
 import org.example.usecases.OrderService;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,5 +28,12 @@ public class OrderController {
   public ResponseEntity<OrderGetDto> save(@RequestBody OrderCreateDto orderDto) {
     OrderGetDto createdOrder = orderService.update(orderDto);
     return ResponseEntity.ok(createdOrder);
+  }
+
+  @GetMapping(value = "/orders/csv", produces = "text/csv")
+  public ResponseEntity<byte[]> exportCsv() {
+    return ResponseEntity.ok()
+        .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"orders.csv\"")
+        .body(orderService.exportCsv());
   }
 }

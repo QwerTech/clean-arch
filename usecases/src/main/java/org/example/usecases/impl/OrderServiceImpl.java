@@ -1,11 +1,14 @@
 package org.example.usecases.impl;
 
 import java.util.Optional;
+import java.util.stream.Stream;
 import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.example.entities.Order;
 import org.example.repositories.OrderRepository;
+import org.example.repositories.csv.OrderCsvRecord;
+import org.example.repositories.csv.OrdersCsvBuilder;
 import org.example.usecases.OrderCreateDto;
 import org.example.usecases.OrderGetDto;
 import org.example.usecases.OrderService;
@@ -17,6 +20,7 @@ import org.springframework.stereotype.Service;
 class OrderServiceImpl implements OrderService {
 
   private final OrderRepository orderRepository;
+  private final OrdersCsvBuilder ordersCsvBuilder;
 
   @Override
   public OrderGetDto getById(int id) {
@@ -31,5 +35,12 @@ class OrderServiceImpl implements OrderService {
   public OrderGetDto update(OrderCreateDto order) {
     Order savedOrder = orderRepository.save(new Order().setName(order.getName()));
     return new OrderGetDto().setId(savedOrder.getId()).setName(savedOrder.getName());
+  }
+
+  @Override
+  public byte[] exportCsv() {
+    Stream<OrderCsvRecord> recordsStream = orderRepository.findAll().stream()
+        .map(o -> new OrderCsvRecord().setId(o.getId()).setName(o.getName()));
+    return ordersCsvBuilder.buildOrdersCsv(recordsStream);
   }
 }
