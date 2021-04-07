@@ -28,6 +28,7 @@
     <module>dataproviders/dataproviders.sqlite</module>
     <module>dataproviders/dataproviders.postgres</module>
     <module>dataproviders/dataproviders.csv</module>
+    <module>dataproviders/dataproviders.email</module>
     <module>entrypoints/entrypoints.controllers</module>
     <module>entrypoints/entrypoints.jobs</module>
     <module>entrypoints/entrypoints.kafka</module>

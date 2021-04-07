@@ -1,6 +1,9 @@
 package org.example.usecases;
 
 
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+
 public interface OrderService {
 
   OrderGetDto getById(int id);
@@ -8,4 +11,6 @@ public interface OrderService {
   OrderGetDto update(OrderCreateDto order);
 
   byte[] exportCsv();
+
+  CompletableFuture<Void> emailOrders(List<String> to);
 }

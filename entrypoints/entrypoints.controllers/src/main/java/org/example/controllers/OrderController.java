@@ -1,5 +1,9 @@
 package org.example.controllers;
 
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
 import lombok.RequiredArgsConstructor;
 import org.example.usecases.OrderCreateDto;
 import org.example.usecases.OrderGetDto;
@@ -10,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -35,5 +40,10 @@ public class OrderController {
     return ResponseEntity.ok()
         .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"orders.csv\"")
         .body(orderService.exportCsv());
+  }
+
+  @PostMapping(value = "/orders/email")
+  public CompletableFuture<ResponseEntity<?>> sendEmail(@RequestParam("to") @NotBlank @Valid List<String> to) {
+    return orderService.emailOrders(to).thenApply(v -> ResponseEntity.noContent().build());
   }
 }

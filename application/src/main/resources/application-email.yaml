@@ -1,0 +1,6 @@
+spring:
+  mail:
+    host: localhost
+    port: 2500
+    test-connection: true
+    from: from@email.com

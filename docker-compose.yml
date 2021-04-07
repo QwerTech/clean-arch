@@ -19,3 +19,9 @@ services:
       POSTGRES_PASSWORD: password
       POSTGRES_USER: user
       POSTGRES_DB: clean_arch
+  inbucket:
+    image: inbucket/inbucket
+    ports:
+      - "2500:2500"
+      - "1100:1100"
+      - "9000:9000"

@@ -1,10 +1,15 @@
 package org.example.usecases.impl;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
 import java.util.stream.Stream;
 import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.example.dataproviders.email.EmailMessage;
+import org.example.dataproviders.email.EmailSender;
 import org.example.entities.Order;
 import org.example.repositories.OrderRepository;
 import org.example.repositories.csv.OrderCsvRecord;
@@ -21,6 +26,7 @@ class OrderServiceImpl implements OrderService {
 
   private final OrderRepository orderRepository;
   private final OrdersCsvBuilder ordersCsvBuilder;
+  private final EmailSender emailSender;
 
   @Override
   public OrderGetDto getById(int id) {
@@ -42,5 +48,13 @@ class OrderServiceImpl implements OrderService {
     Stream<OrderCsvRecord> recordsStream = orderRepository.findAll().stream()
         .map(o -> new OrderCsvRecord().setId(o.getId()).setName(o.getName()));
     return ordersCsvBuilder.buildOrdersCsv(recordsStream);
+  }
+
+  @Override
+  public CompletableFuture<Void> emailOrders(List<String> to) {
+    HashMap<String, byte[]> attachments = new HashMap<String, byte[]>() {{
+      put("orders.csv", exportCsv());
+    }};
+    return emailSender.send(new EmailMessage("Orders", "Orders are in the attachment", to, attachments));
   }
 }
