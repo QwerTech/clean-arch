@@ -9,5 +9,6 @@ public class OrderGetDto {
 
   private Integer id;
   private String name;
+  private Integer customerId;
 
 }

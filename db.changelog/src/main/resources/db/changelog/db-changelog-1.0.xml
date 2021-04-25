@@ -2,7 +2,7 @@
   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
-  
+
   <changeSet id="create order table" author="Pavel_Novikov">
     <createTable tableName="orders">
       <column name="id" autoIncrement="true" type="int">
@@ -13,4 +13,64 @@
       </column>
     </createTable>
   </changeSet>
+
+  <changeSet id="create customer table" author="Pavel_Novikov">
+    <createTable tableName="customers">
+      <column name="id" autoIncrement="true" type="int">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column name="name" type="VARCHAR">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+  </changeSet>
+
+  <changeSet id="create products table" author="Pavel_Novikov">
+    <createTable tableName="products">
+      <column name="id" autoIncrement="true" type="int">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column name="name" type="VARCHAR">
+        <constraints nullable="false"/>
+      </column>
+      <column name="code" type="VARCHAR">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+  </changeSet>
+
+  <changeSet id="create order_products table" author="Pavel_Novikov">
+    <createTable tableName="order_products">
+      <column name="id" autoIncrement="true" type="int">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column name="order_id" type="int">
+        <constraints nullable="false"/>
+      </column>
+      <column name="product_id" type="int">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+
+    <addForeignKeyConstraint baseTableName="order_products" baseColumnNames="order_id" constraintName="order_products_order_id"
+      referencedTableName="orders" referencedColumnNames="id"/>
+
+    <addForeignKeyConstraint baseTableName="order_products" baseColumnNames="product_id" constraintName="order_products_product_id"
+      referencedTableName="products" referencedColumnNames="id"/>
+  </changeSet>
+
+  <changeSet id="add customer_id column to orders" author="Pavel_Novikov">
+    <addColumn tableName="orders">
+      <column name="customer_id" type="int"/>
+    </addColumn>
+    <addForeignKeyConstraint baseTableName="orders" baseColumnNames="customer_id" constraintName="orders_customer_id"
+      referencedTableName="customers" referencedColumnNames="id"/>
+  </changeSet>
+
+  <changeSet id="add creation_date_time column to orders" author="Pavel_Novikov">
+    <addColumn tableName="orders">
+      <column name="creation_date_time" type="timestamp with time zone"/>
+    </addColumn>
+  </changeSet>
+
 </databaseChangeLog>

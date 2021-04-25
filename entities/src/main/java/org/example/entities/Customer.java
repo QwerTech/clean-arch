@@ -1,25 +1,22 @@
 package org.example.entities;
 
 
-import java.time.OffsetDateTime;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.experimental.Accessors;
-import org.springframework.data.annotation.CreatedDate;
 
 @Data
-@Entity(name = "orders")
+@Entity(name = "customers")
 @Accessors(chain = true)
-public class Order {
+public class Customer {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,12 +25,6 @@ public class Order {
   @OneToMany
   @ToString.Exclude
   @EqualsAndHashCode.Exclude
-  @JoinColumn(name = "order_id", referencedColumnName = "id")
-  private List<OrderProduct> orderProducts;
-  @ManyToOne
   @JoinColumn(name = "customer_id", referencedColumnName = "id")
-  private Customer customer;
-
-  @CreatedDate
-  private OffsetDateTime creationDateTime;
+  private List<Order> orders;
 }

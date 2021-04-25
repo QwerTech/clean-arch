@@ -46,4 +46,9 @@ public class OrderController {
   public CompletableFuture<ResponseEntity<?>> sendEmail(@RequestParam("to") @NotBlank @Valid List<String> to) {
     return orderService.emailOrders(to).thenApply(v -> ResponseEntity.noContent().build());
   }
+
+  @GetMapping(value = "/customers/{customerId}/orders/last5")
+  public ResponseEntity<List<OrderGetDto>> last5OrdersForCustomer(@PathVariable("customerId") int customerId) {
+    return ResponseEntity.ok(orderService.last5Orders(customerId));
+  }
 }

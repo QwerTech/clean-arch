@@ -5,9 +5,8 @@ import lombok.experimental.Accessors;
 
 @Data
 @Accessors(chain = true)
-public class OrderCreateDto {
+public class CustomerGetDto {
 
+  private Integer id;
   private String name;
-  private Integer customerId;
-
 }

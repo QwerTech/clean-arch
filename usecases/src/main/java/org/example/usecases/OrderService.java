@@ -13,4 +13,6 @@ public interface OrderService {
   byte[] exportCsv();
 
   CompletableFuture<Void> emailOrders(List<String> to);
+
+  List<OrderGetDto> last5Orders(int customerId);
 }
