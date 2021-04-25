@@ -1,4 +1,4 @@
-package org.example.controllers.advices;
+package org.example.entrypoints.controllers.advices;
 
 import javax.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;

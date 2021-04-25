@@ -1,4 +1,4 @@
-package org.example.repositories;
+package org.example.dataproviders.repositories;
 
 import java.util.List;
 import org.example.entities.Order;

@@ -1,4 +1,4 @@
-package org.example.repositories.csv;
+package org.example.dataproviders.csv;
 
 import com.opencsv.bean.CsvBindByName;
 import lombok.Data;

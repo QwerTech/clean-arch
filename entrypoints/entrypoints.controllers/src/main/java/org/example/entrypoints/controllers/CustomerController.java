@@ -1,4 +1,4 @@
-package org.example.controllers;
+package org.example.entrypoints.controllers;
 
 import lombok.RequiredArgsConstructor;
 import org.example.usecases.CustomerCreateDto;

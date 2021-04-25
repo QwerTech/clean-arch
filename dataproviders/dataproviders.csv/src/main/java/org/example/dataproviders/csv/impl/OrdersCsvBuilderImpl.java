@@ -1,4 +1,4 @@
-package org.example.repositories.csv.impl;
+package org.example.dataproviders.csv.impl;
 
 import com.opencsv.bean.StatefulBeanToCsv;
 import com.opencsv.bean.StatefulBeanToCsvBuilder;
@@ -8,9 +8,9 @@ import java.io.Writer;
 import java.nio.charset.StandardCharsets;
 import java.util.stream.Stream;
 import lombok.SneakyThrows;
+import org.example.dataproviders.csv.OrderCsvRecord;
+import org.example.dataproviders.csv.OrdersCsvBuilder;
 import org.example.entities.Order;
-import org.example.repositories.csv.OrderCsvRecord;
-import org.example.repositories.csv.OrdersCsvBuilder;
 import org.springframework.stereotype.Component;
 
 @Component

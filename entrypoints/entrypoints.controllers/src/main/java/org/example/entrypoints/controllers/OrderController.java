@@ -1,4 +1,4 @@
-package org.example.controllers;
+package org.example.entrypoints.controllers;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;

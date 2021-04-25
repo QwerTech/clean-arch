@@ -1,4 +1,4 @@
-package org.example.jobs;
+package org.example.entrypoints.jobs;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

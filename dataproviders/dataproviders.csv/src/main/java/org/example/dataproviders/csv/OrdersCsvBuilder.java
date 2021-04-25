@@ -1,4 +1,4 @@
-package org.example.repositories.csv;
+package org.example.dataproviders.csv;
 
 import java.util.stream.Stream;
 import org.example.entities.Order;
