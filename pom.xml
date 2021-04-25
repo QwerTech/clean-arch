@@ -20,6 +20,7 @@
     <lombok.version>1.18.14</lombok.version>
     <spring-boot.version>2.1.1.RELEASE</spring-boot.version>
     <opencsv.version>5.4</opencsv.version>
+    <swagger.version>2.9.2</swagger.version>
   </properties>
 
   <modules>
@@ -58,6 +59,16 @@
         <groupId>com.opencsv</groupId>
         <artifactId>opencsv</artifactId>
         <version>${opencsv.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.springfox</groupId>
+        <artifactId>springfox-swagger2</artifactId>
+        <version>${swagger.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.springfox</groupId>
+        <artifactId>springfox-swagger-ui</artifactId>
+        <version>${swagger.version}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
