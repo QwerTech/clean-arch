@@ -8,6 +8,7 @@ import java.io.Writer;
 import java.nio.charset.StandardCharsets;
 import java.util.stream.Stream;
 import lombok.SneakyThrows;
+import org.example.entities.Order;
 import org.example.repositories.csv.OrderCsvRecord;
 import org.example.repositories.csv.OrdersCsvBuilder;
 import org.springframework.stereotype.Component;
@@ -17,14 +18,14 @@ class OrdersCsvBuilderImpl implements OrdersCsvBuilder {
 
   @Override
   @SneakyThrows
-  public byte[] buildOrdersCsv(Stream<OrderCsvRecord> records) {
+  public byte[] buildOrdersCsv(Stream<Order> records) {
     ByteArrayOutputStream output = new ByteArrayOutputStream();
     Writer writer = new OutputStreamWriter(output, StandardCharsets.UTF_8);
 
     StatefulBeanToCsv<OrderCsvRecord> sbc = new StatefulBeanToCsvBuilder<OrderCsvRecord>(writer)
         .build();
 
-    sbc.write(records);
+    sbc.write(records.map(OrderCsvRecord::from));
     writer.close();
     return output.toByteArray();
   }

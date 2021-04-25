@@ -12,7 +12,6 @@ import org.example.dataproviders.email.EmailMessage;
 import org.example.dataproviders.email.EmailSender;
 import org.example.entities.Order;
 import org.example.repositories.OrderRepository;
-import org.example.repositories.csv.OrderCsvRecord;
 import org.example.repositories.csv.OrdersCsvBuilder;
 import org.example.usecases.OrderCreateDto;
 import org.example.usecases.OrderGetDto;
@@ -45,8 +44,7 @@ class OrderServiceImpl implements OrderService {
 
   @Override
   public byte[] exportCsv() {
-    Stream<OrderCsvRecord> recordsStream = orderRepository.findAll().stream()
-        .map(o -> new OrderCsvRecord().setId(o.getId()).setName(o.getName()));
+    Stream<Order> recordsStream = orderRepository.findAll().stream();
     return ordersCsvBuilder.buildOrdersCsv(recordsStream);
   }
 
