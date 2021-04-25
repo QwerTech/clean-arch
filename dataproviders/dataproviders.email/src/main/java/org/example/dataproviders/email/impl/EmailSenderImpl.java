@@ -19,7 +19,7 @@ import org.springframework.stereotype.Component;
 class EmailSenderImpl implements EmailSender {
 
   private final JavaMailSender mailSender;
-  @Value("${spring.mail.from}")
+  @Value("${app.email.from}")
   private String fromEmailAddress;
 
   @Override
