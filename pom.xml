@@ -25,6 +25,7 @@
 
   <modules>
     <module>entities</module>
+    <module>dataproviders/impl/dataproviders.impl.email</module>
     <module>dataproviders/impl/dataproviders.impl.csv</module>
     <module>dataproviders/dataproviders.repositories</module>
     <module>dataproviders/dataproviders.sqlite</module>
