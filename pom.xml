@@ -25,9 +25,9 @@
   <modules>
     <module>entities</module>
     <module>dataproviders/impl/dataproviders.impl.csv</module>
+    <module>dataproviders/impl/dataproviders.impl.postgres</module>
+    <module>dataproviders/impl/dataproviders.impl.sqlite</module>
     <module>dataproviders/dataproviders.repositories</module>
-    <module>dataproviders/dataproviders.sqlite</module>
-    <module>dataproviders/dataproviders.postgres</module>
     <module>dataproviders/dataproviders.csv</module>
     <module>dataproviders/dataproviders.email</module>
     <module>entrypoints/entrypoints.controllers</module>

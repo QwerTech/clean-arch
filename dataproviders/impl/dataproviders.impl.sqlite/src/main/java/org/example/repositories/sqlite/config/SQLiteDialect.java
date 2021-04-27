@@ -1,4 +1,4 @@
-package org.example.repositories.sqlite;
+package org.example.repositories.sqlite.config;
 
 import java.sql.Types;
 import org.hibernate.dialect.Dialect;
