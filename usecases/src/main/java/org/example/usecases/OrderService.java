@@ -3,6 +3,8 @@ package org.example.usecases;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
+import org.example.usecases.dto.OrderCreateDto;
+import org.example.usecases.dto.OrderGetDto;
 
 public interface OrderService {
 

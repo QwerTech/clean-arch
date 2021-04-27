@@ -2,9 +2,9 @@ package org.example.entrypoints.jobs;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.example.usecases.OrderCreateDto;
-import org.example.usecases.OrderGetDto;
 import org.example.usecases.OrderService;
+import org.example.usecases.dto.OrderCreateDto;
+import org.example.usecases.dto.OrderGetDto;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 

@@ -1,7 +1,5 @@
 package org.example.usecases.impl;
 
-import static java.util.Optional.ofNullable;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
@@ -19,9 +17,10 @@ import org.example.dataproviders.repositories.CustomerRepository;
 import org.example.dataproviders.repositories.OrderRepository;
 import org.example.entities.Customer;
 import org.example.entities.Order;
-import org.example.usecases.OrderCreateDto;
-import org.example.usecases.OrderGetDto;
 import org.example.usecases.OrderService;
+import org.example.usecases.dto.OrderCreateDto;
+import org.example.usecases.dto.OrderGetDto;
+import org.example.usecases.mapping.mappers.OrderMapper;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -33,6 +32,7 @@ class OrderServiceImpl implements OrderService {
   private final CustomerRepository customerRepository;
   private final OrdersCsvBuilder ordersCsvBuilder;
   private final EmailSender emailSender;
+  private final OrderMapper orderMapper;
 
   @Override
   public OrderGetDto getById(int id) {
@@ -40,7 +40,7 @@ class OrderServiceImpl implements OrderService {
     if (!order.isPresent()) {
       throw new EntityNotFoundException(String.format("Order with id=%d not found", id));
     }
-    return mapToOrderGetDto(order.get());
+    return orderMapper.orderToOrderGetDto(order.get());
   }
 
   @Override
@@ -49,15 +49,8 @@ class OrderServiceImpl implements OrderService {
     if (order.getCustomerId() != null) {
       customer = customerRepository.getOne(order.getCustomerId());
     }
-    Order savedOrder = orderRepository.save(new Order().setName(order.getName()).setCustomer(customer));
-    return mapToOrderGetDto(savedOrder);
-  }
-
-  private OrderGetDto mapToOrderGetDto(Order order) {
-    return new OrderGetDto()
-        .setId(order.getId())
-        .setName(order.getName())
-        .setCustomerId(ofNullable(order.getCustomer()).map(Customer::getId).orElse(null));
+    Order savedOrder = orderRepository.save(orderMapper.orderCreateDtoAndCustomerToOrder(order, customer));
+    return orderMapper.orderToOrderGetDto(savedOrder);
   }
 
   @Override
@@ -78,7 +71,7 @@ class OrderServiceImpl implements OrderService {
   public List<OrderGetDto> last5Orders(int customerId) {
     Objects.requireNonNull(customerRepository.getOne(customerId));
     return orderRepository.getTop5ByCustomerIdOrderByCreationDateTimeDesc(customerId).stream()
-        .map(this::mapToOrderGetDto)
+        .map(orderMapper::orderToOrderGetDto)
         .collect(Collectors.toList());
   }
 }

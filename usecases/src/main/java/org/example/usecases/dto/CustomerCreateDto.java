@@ -1,4 +1,4 @@
-package org.example.usecases;
+package org.example.usecases.dto;
 
 import lombok.Data;
 import lombok.experimental.Accessors;

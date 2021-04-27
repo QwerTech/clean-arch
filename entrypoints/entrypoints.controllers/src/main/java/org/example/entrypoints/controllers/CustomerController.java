@@ -1,9 +1,9 @@
 package org.example.entrypoints.controllers;
 
 import lombok.RequiredArgsConstructor;
-import org.example.usecases.CustomerCreateDto;
-import org.example.usecases.CustomerGetDto;
 import org.example.usecases.CustomerService;
+import org.example.usecases.dto.CustomerCreateDto;
+import org.example.usecases.dto.CustomerGetDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
