@@ -14,6 +14,11 @@
   <dependencies>
     <dependency>
       <groupId>org.example</groupId>
+      <artifactId>backgroundjobs.impl</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>org.example</groupId>
       <artifactId>entrypoints.controllers</artifactId>
       <version>1.0-SNAPSHOT</version>
     </dependency>

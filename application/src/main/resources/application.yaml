@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: postgres, kafka, email
+    active: postgres, kafka, email, quartz
   jpa:
     open-in-view: false
     hibernate:
