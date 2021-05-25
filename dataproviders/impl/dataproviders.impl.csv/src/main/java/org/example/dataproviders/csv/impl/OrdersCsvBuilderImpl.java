@@ -8,7 +8,6 @@ import java.io.Writer;
 import java.nio.charset.StandardCharsets;
 import java.util.stream.Stream;
 import lombok.SneakyThrows;
-import org.example.dataproviders.csv.OrderCsvRecord;
 import org.example.dataproviders.csv.OrdersCsvBuilder;
 import org.example.entities.Order;
 import org.springframework.stereotype.Component;
