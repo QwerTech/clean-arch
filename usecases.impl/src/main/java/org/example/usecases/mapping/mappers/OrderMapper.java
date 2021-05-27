@@ -17,5 +17,7 @@ public interface OrderMapper {
 
   @Mapping(target = "id", ignore = true)
   @Mapping(target = "name", source = "order.name")
+  @Mapping(target = "status", constant = "CREATED")
+  @Mapping(target = "creationDateTime", expression = "java(OffsetDateTime.now())")
   Order orderCreateDtoAndCustomerToOrder(@NonNull OrderCreateDto order, Customer customer);
 }

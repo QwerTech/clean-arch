@@ -16,5 +16,10 @@
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
     </dependency>
+    <dependency>
+      <groupId>org.example</groupId>
+      <artifactId>entities</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
   </dependencies>
 </project>

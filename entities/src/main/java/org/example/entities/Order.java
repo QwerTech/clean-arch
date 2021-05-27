@@ -4,9 +4,8 @@ package org.example.entities;
 import java.time.OffsetDateTime;
 import java.util.List;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -14,16 +13,13 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.experimental.Accessors;
-import org.springframework.data.annotation.CreatedDate;
+import org.example.entities.enums.OrderStatus;
 
 @Data
 @Entity(name = "orders")
 @Accessors(chain = true)
-public class Order {
+public class Order extends BaseEntity {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer id;
   private String name;
   @OneToMany
   @ToString.Exclude
@@ -34,6 +30,8 @@ public class Order {
   @JoinColumn(name = "customer_id", referencedColumnName = "id")
   private Customer customer;
 
-  @CreatedDate
+  @Enumerated(EnumType.STRING)
+  private OrderStatus status;
+
   private OffsetDateTime creationDateTime;
 }
