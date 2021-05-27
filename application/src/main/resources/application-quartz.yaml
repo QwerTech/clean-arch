@@ -1,0 +1,7 @@
+spring:
+  quartz:
+    job-store-type: jdbc
+    properties:
+      org.quartz.jobStore.driverDelegateClass: org.quartz.impl.jdbcjobstore.PostgreSQLDelegate
+
+app.export.emailRecipient: recipientAddress@mail.com

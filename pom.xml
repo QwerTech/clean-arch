@@ -28,6 +28,8 @@
 
   <modules>
     <module>entities</module>
+    <module>backgroundjobs/backgroundjobs</module>
+    <module>backgroundjobs/backgroundjobs.impl</module>
     <module>dataproviders/impl/dataproviders.impl.email</module>
     <module>dataproviders/impl/dataproviders.impl.csv</module>
     <module>dataproviders/impl/dataproviders.impl.postgres</module>
