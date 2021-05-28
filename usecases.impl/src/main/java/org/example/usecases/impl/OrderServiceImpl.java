@@ -49,8 +49,9 @@ class OrderServiceImpl implements OrderService {
     if (order.getCustomerId() != null) {
       customer = customerRepository.getOne(order.getCustomerId());
     }
-    Order savedOrder = orderRepository.save(orderMapper.orderCreateDtoAndCustomerToOrder(order, customer));
-    return orderMapper.orderToOrderGetDto(savedOrder);
+    Order orderEntity = orderMapper.orderCreateDtoAndCustomerToOrder(order, customer);
+    orderRepository.save(orderEntity);
+    return orderMapper.orderToOrderGetDto(orderEntity);
   }
 
   @Override

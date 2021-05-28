@@ -12,13 +12,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
-@RunWith(SpringRunner.class)
-@ActiveProfiles("test")
-@SpringBootTest(webEnvironment = RANDOM_PORT)
-public class ApplicationTest {
-
-  @MockBean
-  private JavaMailSender javaMailSender;
+public class ApplicationTest extends BaseITTest{
 
   @Autowired
   private Application application;

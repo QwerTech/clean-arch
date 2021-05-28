@@ -69,7 +69,15 @@
 
   <changeSet id="add creation_date_time column to orders" author="Pavel_Novikov">
     <addColumn tableName="orders">
-      <column name="creation_date_time" type="timestamp with time zone"/>
+      <column name="creation_date_time" type="timestamp with time zone">
+        <constraints nullable="false"/>
+      </column>
+    </addColumn>
+  </changeSet>
+
+  <changeSet id="add status column to orders" author="Pavel_Novikov">
+    <addColumn tableName="orders">
+      <column name="status" type="VARCHAR"/>
     </addColumn>
   </changeSet>
 
