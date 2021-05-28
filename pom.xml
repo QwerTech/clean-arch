@@ -28,19 +28,19 @@
 
   <modules>
     <module>entities</module>
-    <module>backgroundjobs/backgroundjobs</module>
+    <module>backgroundjobs/backgroundjobs.api</module>
     <module>backgroundjobs/backgroundjobs.impl</module>
-    <module>dataproviders/impl/dataproviders.impl.email</module>
-    <module>dataproviders/impl/dataproviders.impl.csv</module>
-    <module>dataproviders/impl/dataproviders.impl.postgres</module>
-    <module>dataproviders/impl/dataproviders.impl.sqlite</module>
-    <module>dataproviders/dataproviders.repositories</module>
-    <module>dataproviders/dataproviders.csv</module>
-    <module>dataproviders/dataproviders.email</module>
+    <module>dataproviders/dataproviders.email.impl</module>
+    <module>dataproviders/dataproviders.csv.impl</module>
+    <module>dataproviders/dataproviders.repositories.postgres.impl</module>
+    <module>dataproviders/dataproviders.repositories.sqlite.impl</module>
+    <module>dataproviders/dataproviders.repositories.api</module>
+    <module>dataproviders/dataproviders.csv.api</module>
+    <module>dataproviders/dataproviders.email.api</module>
     <module>entrypoints/entrypoints.controllers</module>
     <module>entrypoints/entrypoints.jobs</module>
     <module>entrypoints/entrypoints.kafka</module>
-    <module>usecases</module>
+    <module>usecases.api</module>
     <module>usecases.impl</module>
     <module>db.changelog</module>
     <module>application</module>
